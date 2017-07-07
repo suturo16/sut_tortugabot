@@ -13,6 +13,6 @@
     <remap from="turtlebot_teleop_joystick/cmd_vel" to="tortugabot1/cmd_vel"/>
   </node>
 
-  <node pkg="joy" type="joy_node" name="tortugabot1/joystick"/>
+  <node pkg="joy" type="joy_node" name="joystick"/>
 
 </launch>

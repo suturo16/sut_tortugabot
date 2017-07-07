@@ -12,7 +12,7 @@
     <arg name="base_width" default="0.339"/> 
     <arg name="run_diag" default="true"/>
 
-    <node if="$(arg run_diag)" pkg="roboclaw_node" type="roboclaw_node.py" name="tortugabot1/roboclaw_node" output="screen">
+    <node if="$(arg run_diag)" pkg="roboclaw_node" type="roboclaw_node.py" name="roboclaw_node" output="screen">
 
         <param name="~dev" value="$(arg dev)"/>
         <param name="~baud" value="$(arg baud)"/>
