@@ -1,9 +1,5 @@
 <?xml version="1.0"?>
 <launch>
-
-<group ns="tortugabot1">
-    <param name="tf_prefix" value="tortugabot_tf" />
-
     <arg name="dev" default="/dev/ttyACM0"/>
     <arg name="baud" default="115200"/>
     <arg name="address" default="128"/>
@@ -30,5 +26,4 @@
         <rosparam command="load"
                   file="$(find roboclaw_node)/config/roboclaw_diag.yaml"/>
     </node>
-  </group>
 </launch>

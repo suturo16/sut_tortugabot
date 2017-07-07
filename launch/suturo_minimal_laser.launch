@@ -15,7 +15,9 @@
   </node>
 
   <node name="laser_on_plate" pkg="tf" type="static_transform_publisher"
-        args="-0.05 0 0.36 0 0 0 tortugabot1/base_footprint tortugabot1/laser 100"/>
+        args="-0.05 0 0.36 0 0 0 tortugabot1/base_footprint tortugabot1/laser 100">
+	<!--param name="tf_prefix" value="tortugabot1_tf" /-->
+  </node>
         
   </group>
 </launch>
