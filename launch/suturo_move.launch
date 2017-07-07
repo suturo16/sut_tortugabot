@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+    <!--group ns="tortugabot1-->
+    	<!--param  name="tf_prefix" value="tortugabot1" /-->
+    		<include file="$(find tortugabot_bringup)/launch/minimal_laser.launch"/>
+    		<include file="$(find navigate_map)/launch/amcl_laser.launch"/>
+    		<include file="$(find navigate_map)/launch/move_base_laser.launch"/>
+    		<include file="$(find navigate_map)/launch/markers.launch"/>
+    <!--/group-->
+</launch>
