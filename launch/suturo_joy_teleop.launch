@@ -10,9 +10,9 @@
     <param name="scale_linear" value="0.6"/>
     <param name="axis_deadman" value="10"/>
     <!--remap from="turtlebot_teleop_joystick/cmd_vel" to="teleop_velocity_smoother/raw_cmd_vel"/-->
-    <remap from="turtlebot_teleop_joystick/cmd_vel" to="cmd_vel"/>
+    <remap from="turtlebot_teleop_joystick/cmd_vel" to="tortugabot1/cmd_vel"/>
   </node>
 
-  <node pkg="joy" type="joy_node" name="joystick"/>
+  <node pkg="joy" type="joy_node" name="tortugabot1/joystick"/>
 
 </launch>
