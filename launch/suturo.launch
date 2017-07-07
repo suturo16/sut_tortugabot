@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+  <include file="$(find tortugabot_bringup)/launch/base_and_joy.launch"/>
+  <node name="laser_driver" pkg="urg_node" type="urg_node" args="_ip_address:=192.168.200.10">
+    <remap from="scan" to="scan_raw" />
+    <remap from="camera_depth_frame" to="laser" />
+  </node>
+
+  <node name="laser_filter" pkg="laser_range_filter" type="filter.py">
+    <!-- <remap from="scan_filtered" to="scan" /> -->
+    <!-- <remap from="scan" to="scan_raw" /> -->
+  </node>
+
+  <node name="laser_on_plate" pkg="tf" type="static_transform_publisher"
+        args="-0.05 0 0.36 0 0 0 base_footprint laser 100"/>
+</launch>
