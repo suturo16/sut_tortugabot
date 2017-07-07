@@ -1,0 +1,49 @@
+<launch>
+
+  <arg name="tortugabot_version" default="$(optenv TORTUGABOT_VERSION 1)" />
+  <!-- Version 0 is the bot with small wheels, version 1 - big wheels -->
+
+  <group unless="$(arg tortugabot_version)">
+      <node pkg="roboclaw_driver" type="roboclaw_driver" name="tortugabot_roboclaw" output="screen">
+          <param name="serial_port" value="/dev/ttyACM0"/>
+          <param name="baudrate" value="115200"/>
+          <param name="roboclaw_address" value="128"/>
+
+          <param name="odom_frame" value="odom"/>
+          <param name="base_footprint_frame" value="base_footprint"/>
+
+          <param name="invert_left_motor_sign" value="false"/>
+          <param name="invert_right_motor_sign" value="false"/>
+
+          <param name="wheel_diameter" value="0.097"/>
+          <param name="wheel_to_wheel_distance" value="0.339"/>
+          <param name="ticks_per_turn" value="360"/>
+          <param name="pps_max" value="1250"/>
+          <param name="pid_p" value="300.0"/>
+          <param name="pid_i" value="30.0"/>
+          <param name="pid_d" value="5.0"/>
+      </node>
+  </group>
+
+  <group if="$(arg tortugabot_version)">
+      <node pkg="roboclaw_driver" type="roboclaw_driver" name="tortugabot_roboclaw" output="screen">
+          <param name="serial_port" value="/dev/ttyACM0"/>
+          <param name="baudrate" value="115200"/>
+          <param name="roboclaw_address" value="128"/>
+
+          <param name="odom_frame" value="odom"/>
+          <param name="base_footprint_frame" value="base_footprint"/>
+
+          <param name="invert_left_motor_sign" value="true"/>
+          <param name="invert_right_motor_sign" value="true"/>
+
+          <param name="wheel_diameter" value="0.125"/>
+          <param name="wheel_to_wheel_distance" value="0.357"/>
+          <param name="ticks_per_turn" value="980"/>
+          <param name="pps_max" value="2300"/>
+          <param name="pid_p" value="50.0"/>
+          <param name="pid_i" value="10.0"/>
+          <param name="pid_d" value="5.0"/>
+      </node>
+  </group>
+</launch>
