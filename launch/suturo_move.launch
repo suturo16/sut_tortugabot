@@ -2,9 +2,9 @@
 <launch>
     <!--group ns="tortugabot1-->
     	<!--param  name="tf_prefix" value="tortugabot1" /-->
-    		<include file="$(find tortugabot_bringup)/launch/minimal_laser.launch"/>
-    		<include file="$(find navigate_map)/launch/amcl_laser.launch"/>
-    		<include file="$(find navigate_map)/launch/move_base_laser.launch"/>
-    		<include file="$(find navigate_map)/launch/markers.launch"/>
+    		<include file="$(find sut_tortugabot/launch/suturo_minimal_laser.launch"/>
+    		<include file="$(find sut_tortugabot)/launch/suturo_amcl_laser.launch"/>
+    		<include file="$(find sut_tortugabot)/launch/suturo_move_base_laser.launch"/>
+    		<include file="$(find sut_tortugabot)/launch/suturo_markers.launch"/>
     <!--/group-->
 </launch>
