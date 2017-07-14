@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <launch>
   <group ns="tortugabot1">
-      <param name="tf_prefix" value="tortugabot1_tf" />
+      <param name="tf_prefix" value="tortugabot1" />
       
     <include file="$(find sut_tortugabot)/launch/suturo_base_and_joy.launch"/>
     <node name="laser_driver" pkg="urg_node" type="urg_node" args="_ip_address:=192.168.200.10">
@@ -15,8 +15,8 @@
     </node>
 
     <node name="laser_on_plate" pkg="tf" type="static_transform_publisher"
-          args="-0.05 0 0.36 0 0 0 base_footprint laser 100">
-  	<!--param name="tf_prefix" value="tortugabot1_tf" /-->
+          args="-0.05 0 0.36 0 0 0 tortugabot1/base_footprint tortugabot1/laser 100">
+  	<!--param name="tf_prefix" value="tortugabot1"/-->
     </node>
           
   </group>

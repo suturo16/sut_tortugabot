@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <launch>
+    <!--group ns="tortugabot1"-->
+    <param name="tf_prefix" value="tortugabot1" />
     <arg name="dev" default="/dev/ttyACM0"/>
     <arg name="baud" default="115200"/>
     <arg name="address" default="128"/>
@@ -11,7 +13,7 @@
     <arg name="base_width" default="0.339"/> 
     <arg name="run_diag" default="true"/>
 
-    <node if="$(arg run_diag)" pkg="roboclaw_node" type="roboclaw_node.py" name="roboclaw_node" output="screen">
+    <node if="$(arg run_diag)" pkg="roboclaw_node" type="suturo_roboclaw_node.py" name="roboclaw_node" output="screen">
 
         <param name="~dev" value="$(arg dev)"/>
         <param name="~baud" value="$(arg baud)"/>
@@ -19,11 +21,13 @@
         <param name="~max_speed" value="$(arg max_speed)"/>
         <param name="~ticks_per_meter" value="$(arg ticks_per_meter)"/>
         <param name="~base_width" value="$(arg base_width)"/>
-    </node>
+	<param name="tf_prefix" value="tortugabot1"/>    
+</node>
 
     <node pkg="diagnostic_aggregator" type="aggregator_node"
           name="diagnostic_aggregator">
         <rosparam command="load"
                   file="$(find roboclaw_node)/config/roboclaw_diag.yaml"/>
     </node>
+  <!--/group-->
 </launch>

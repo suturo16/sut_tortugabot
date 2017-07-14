@@ -2,8 +2,8 @@
 
   <arg name="tortugabot_version" default="$(optenv TORTUGABOT_VERSION 1)" />
   <!-- Version 0 is the bot with small wheels, version 1 - big wheels -->
-
-  <!--param name="tf_prefix" value="tortugabot1_tf" /-->
+ <!--group ns="tortugbaot1"-->
+  <param name="tf_prefix" value="tortugabot1" >
 
   <group unless="$(arg tortugabot_version)">
       <node pkg="roboclaw_driver" type="roboclaw_driver" name="tortugabot_roboclaw" output="screen">
@@ -12,7 +12,7 @@
           <param name="roboclaw_address" value="128"/>
 
           <param name="odom_frame" value="odom"/>
-          <param name="base_footprint_frame" value="base_footprint"/>
+          <param name="base_footprint_frame" value="tortugabot1/base_footprint"/>
 
           <param name="invert_left_motor_sign" value="false"/>
           <param name="invert_right_motor_sign" value="false"/>
@@ -34,7 +34,7 @@
           <param name="roboclaw_address" value="128"/>
 
           <param name="odom_frame" value="odom"/>
-          <param name="base_footprint_frame" value="base_footprint"/>
+          <param name="base_footprint_frame" value="tortugabot1/base_footprint"/>
 
           <param name="invert_left_motor_sign" value="true"/>
           <param name="invert_right_motor_sign" value="true"/>
@@ -47,5 +47,6 @@
           <param name="pid_i" value="10.0"/>
           <param name="pid_d" value="5.0"/>
       </node>
-  </group>
+  <!--/group-->
+</group>
 </launch>
