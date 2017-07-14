@@ -5,8 +5,8 @@
       
     <include file="$(find sut_tortugabot)/launch/suturo_base_and_joy.launch"/>
     <node name="laser_driver" pkg="urg_node" type="urg_node" args="_ip_address:=192.168.200.10">
-      <remap from="scan" to="tortugabot1/scan_raw" />
-      <remap from="camera_depth_frame" to="tortugabot1/laser" />
+      <remap from="scan" to="scan_raw" />
+      <remap from="camera_depth_frame" to="laser" />
     </node>
 
     <node name="laser_filter" pkg="laser_range_filter" type="filter.py">
