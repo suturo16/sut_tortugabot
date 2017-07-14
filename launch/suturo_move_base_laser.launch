@@ -1,11 +1,11 @@
 <launch>
   <group ns="tortugabot1">
   <param name="tf_prefix" value="tortugabot1_tf" />
-    <arg name="odom_frame_id"   default="tortugabot1/odom"/>
-    <arg name="base_frame_id"   default="tortugabot1/base_footprint"/>
+    <arg name="odom_frame_id"   default="odom"/>
+    <arg name="base_frame_id"   default="base_footprint"/>
     <arg name="global_frame_id" default="map"/>
-    <arg name="odom_topic" default="tortugabot1/odom" />
-    <arg name="laser_topic" default="tortugabot1/scan" />
+    <arg name="odom_topic" default="odom" />
+    <arg name="laser_topic" default="scan" />
 
     <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
       <rosparam file="$(find navigate_map)/launch/param_laser/costmap_common_params.yaml" command="load" ns="global_costmap" />
