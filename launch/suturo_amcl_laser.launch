@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <launch>
-  <group ns="tortugabot1">
-  <param name="tf_prefix" value="tortugabot1"/>
-
+  
     <arg name="map_file" default="$(find navigate_map)/maps/suturo_map.yaml"/>
-    <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+    <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" >
+	<param name="frame_id" value="/map"/>
+    </node>
 
+     
+  <param name="tf_prefix" value="tortugabot1"/>
+  <group ns="tortugabot1">
     <arg name="use_map_topic"   default="true"/>
-    <arg name="scan_topic"      default="scan"/> 
+    <arg name="scan_topic"      default="tortugabot1/scan"/> 
     <arg name="initial_pose_x"  default="0.0"/>
     <arg name="initial_pose_y"  default="0.0"/>
     <arg name="initial_pose_a"  default="0.0"/>
-    <arg name="odom_frame_id"   default="odom"/>
-    <arg name="base_frame_id"   default="/tortugabot1/base_footprint"/>
-    <arg name="global_frame_id" default="map"/>
+    <arg name="odom_frame_id"   default="/odom_combined"/>
+    <arg name="base_frame_id"   default="base_footprint"/>
+    <arg name="global_frame_id" default="/map"/>
     <node pkg="amcl" type="amcl" name="amcl">
       <param name="use_map_topic"             value="$(arg use_map_topic)"/>
       <!-- Publish scans from best pose at a max of 10 Hz -->
@@ -55,6 +58,8 @@
       <param name="initial_pose_y"            value="$(arg initial_pose_y)"/>
       <param name="initial_pose_a"            value="$(arg initial_pose_a)"/>
       <remap from="scan"                      to="$(arg scan_topic)"/>
+      <remap from="map"			      to="/map"/>
+      <remap from="odom"		      to="/odom_combined"/>
     </node>
   </group>
 

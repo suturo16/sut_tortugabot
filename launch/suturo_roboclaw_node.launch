@@ -13,7 +13,7 @@
     <arg name="base_width" default="0.339"/> 
     <arg name="run_diag" default="true"/>
 
-    <node if="$(arg run_diag)" pkg="roboclaw_node" type="suturo_roboclaw_node.py" name="roboclaw_node" output="screen">
+    <node if="$(arg run_diag)" pkg="sut_tortugabot" type="suturo_roboclaw_node.py" name="roboclaw_node" output="screen">
 
         <param name="~dev" value="$(arg dev)"/>
         <param name="~baud" value="$(arg baud)"/>
@@ -28,6 +28,8 @@
           name="diagnostic_aggregator">
         <rosparam command="load"
                   file="$(find roboclaw_node)/config/roboclaw_diag.yaml"/>
+    
+    	<remap from="odom" to="odom_combined"/>
     </node>
   <!--/group-->
 </launch>

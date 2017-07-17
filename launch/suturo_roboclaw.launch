@@ -11,7 +11,7 @@
           <param name="baudrate" value="115200"/>
           <param name="roboclaw_address" value="128"/>
 
-          <param name="odom_frame" value="odom"/>
+          <param name="odom_frame" value="odom_combined"/>
           <param name="base_footprint_frame" value="tortugabot1/base_footprint"/>
 
           <param name="invert_left_motor_sign" value="false"/>
@@ -24,6 +24,8 @@
           <param name="pid_p" value="300.0"/>
           <param name="pid_i" value="30.0"/>
           <param name="pid_d" value="5.0"/>
+     	  
+ 	  <remap from="odom" to="odom_combined" />
       </node>
   </group>
 
@@ -33,7 +35,7 @@
           <param name="baudrate" value="115200"/>
           <param name="roboclaw_address" value="128"/>
 
-          <param name="odom_frame" value="odom"/>
+          <param name="odom_frame" value="odom_combined"/>
           <param name="base_footprint_frame" value="tortugabot1/base_footprint"/>
 
           <param name="invert_left_motor_sign" value="true"/>
