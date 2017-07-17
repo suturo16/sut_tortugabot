@@ -1,7 +1,7 @@
 <launch>
   <group ns="tortugabot1">
   <param name="tf_prefix" value="tortugabot1" />
-    <arg name="odom_frame_id"   default="/odom_combined"/>
+    <arg name="odom_frame_id"   default="odom"/>
     <arg name="base_frame_id"   default="base_footprint"/>
     <arg name="global_frame_id" default="/map"/>
     <arg name="odom_topic" default="odom" />

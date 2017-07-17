@@ -10,11 +10,11 @@
   <param name="tf_prefix" value="tortugabot1"/>
   <group ns="tortugabot1">
     <arg name="use_map_topic"   default="true"/>
-    <arg name="scan_topic"      default="tortugabot1/scan"/> 
+    <arg name="scan_topic"      default="scan"/> 
     <arg name="initial_pose_x"  default="0.0"/>
     <arg name="initial_pose_y"  default="0.0"/>
     <arg name="initial_pose_a"  default="0.0"/>
-    <arg name="odom_frame_id"   default="/odom_combined"/>
+    <arg name="odom_frame_id"   default="odom"/>
     <arg name="base_frame_id"   default="base_footprint"/>
     <arg name="global_frame_id" default="/map"/>
     <node pkg="amcl" type="amcl" name="amcl">
@@ -59,7 +59,6 @@
       <param name="initial_pose_a"            value="$(arg initial_pose_a)"/>
       <remap from="scan"                      to="$(arg scan_topic)"/>
       <remap from="map"			      to="/map"/>
-      <remap from="odom"		      to="/odom_combined"/>
     </node>
   </group>
 
