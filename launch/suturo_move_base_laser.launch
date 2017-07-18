@@ -1,6 +1,7 @@
+<?xml version="1.0"?>
 <launch>
   <group ns="tortugabot1">
-  <param name="tf_prefix" value="tortugabot1" />
+    <arg name="tf_prefix"       default="tortugabot1" />
     <arg name="odom_frame_id"   default="odom"/>
     <arg name="base_frame_id"   default="base_footprint"/>
     <arg name="global_frame_id" default="/map"/>
@@ -26,6 +27,7 @@
 
       <remap from="odom" to="$(arg odom_topic)"/>
       <remap from="scan" to="$(arg laser_topic)"/>
+      <remap from="map"  to="/map"/>
     </node>
   </group>
 </launch>

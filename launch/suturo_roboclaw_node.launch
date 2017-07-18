@@ -12,25 +12,29 @@
     <!-- <arg name="base_width" default="0.357"/> --> <!--For tortugabot2-->
     <arg name="base_width" default="0.339"/> 
     <arg name="run_diag" default="true"/>
-    <remap from="odom" to="/tortugabot1/odom"/>
+    <!--arg name="frame_id" value="tortugabot1/odom"/-->
+    <!--remap from="odom" to="/tortugabot1/odom"/-->
 
-    <node if="$(arg run_diag)" pkg="roboclaw_node" type="roboclaw_node.py" name="roboclaw_node" output="screen">
-	<param name="tf_prefix" value="tortugabot1" />
+    <node if="$(arg run_diag)" pkg="roboclaw_node" type="suturo_roboclaw_node.py" name="roboclaw_node" output="screen">
+	<!--param name="~tf_prefix" value="tortugabot1" /-->
         <param name="~dev" value="$(arg dev)"/>
         <param name="~baud" value="$(arg baud)"/>
         <param name="~address" value="$(arg address)"/>
         <param name="~max_speed" value="$(arg max_speed)"/>
         <param name="~ticks_per_meter" value="$(arg ticks_per_meter)"/>
         <param name="~base_width" value="$(arg base_width)"/>
-	<remap from="odom" to="/tortugabot1/odom" />    
-</node>
-
+	<!--param name="tf_prefix" value="tortugabot1"/-->
+	<!--remap from="odom" to="tortugabot1/odom"/-->
+ 	<!--param name="frame_id" value="tortugabot1/odom"/-->
+    </node>	
     <node pkg="diagnostic_aggregator" type="aggregator_node"
           name="diagnostic_aggregator">
         <rosparam command="load"
                   file="$(find roboclaw_node)/config/roboclaw_diag.yaml"/>
-    
-    	
+     <!--remap from="odom" to="tortugabot1/odom"/--> 	
     </node>
   <!--/group-->
+
+
+
 </launch>

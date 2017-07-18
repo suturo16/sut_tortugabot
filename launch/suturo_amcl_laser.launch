@@ -7,7 +7,7 @@
     </node>
 
      
-  <param name="tf_prefix" value="tortugabot1"/>
+  <!--param name="tf_prefix" value="tortugabot1"/-->
   <group ns="tortugabot1">
     <arg name="use_map_topic"   default="true"/>
     <arg name="scan_topic"      default="scan"/> 
@@ -16,8 +16,10 @@
     <arg name="initial_pose_a"  default="0.0"/>
     <arg name="odom_frame_id"   default="odom"/>
     <arg name="base_frame_id"   default="base_footprint"/>
-    <arg name="global_frame_id" default="/map"/>
-    <node pkg="amcl" type="amcl" name="amcl">
+    <arg name="global_frame_id" default="map"/>
+    <arg name="tf_prefix" 	default="tortugabot1"/> 
+   <node pkg="amcl" type="amcl" name="amcl">
+      <param name="tf_prefix" value="tortugabot1"/>
       <param name="use_map_topic"             value="$(arg use_map_topic)"/>
       <!-- Publish scans from best pose at a max of 10 Hz -->
       <param name="odom_model_type"           value="diff"/>
@@ -46,8 +48,8 @@
       <param name="laser_likelihood_max_dist" value="10.0"/>
       <param name="update_min_d"              value="0.05"/>
       <param name="update_min_a"              value="0.05"/>
-      <param name="odom_frame_id"             value="$(arg odom_frame_id)"/> 
-      <param name="base_frame_id"             value="$(arg base_frame_id)"/> 
+      <param name="odom_frame_id"             value="$(arg tf_prefix)/$(arg odom_frame_id)"/> 
+      <param name="base_frame_id"             value="$(arg tf_prefix)/$(arg base_frame_id)"/> 
       <param name="global_frame_id"           value="$(arg global_frame_id)"/>
       <param name="resample_interval"         value="1"/>
       <!-- Increase tolerance because the computer can get quite busy -->
@@ -59,6 +61,7 @@
       <param name="initial_pose_a"            value="$(arg initial_pose_a)"/>
       <remap from="scan"                      to="$(arg scan_topic)"/>
       <remap from="map"			      to="/map"/>
+      <remap from="static_map"		      to="/stati_map"/>
     </node>
   </group>
 
