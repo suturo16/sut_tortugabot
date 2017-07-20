@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<launch>
+  <param
+    name="tf_prefix"
+    value="tortugabot1" />
+  <arg
+    name="model" />
+  <arg
+    name="gui"
+    default="False" />
+  <arg name="urdf-name" default="tortuga_description.urdf.xacro"/>
+  <arg name="urdf-path" value="$(find tortuga_description)/urdf/$(arg urdf-name)"/>
+
+  <include file="$(find tortuga_description)/launch/upload_tortuga.launch">
+    <arg name="urdf-name" value="$(arg urdf-name)"/>
+    <arg name="urdf-path" value="$(arg urdf-path)"/>
+  </include>
+
+  <param
+    name="use_gui"
+    value="$(arg gui)" />
+  <node
+    name="joint_state_publisher"
+    pkg="joint_state_publisher"
+    type="joint_state_publisher" />
+  <node
+    name="robot_state_publisher"
+    pkg="robot_state_publisher"
+    type="state_publisher" />
+  <!--node
+    name="rviz"
+    pkg="rviz"
+    type="rviz"
+    args="-d $(find boxy_description)/urdf.rviz" /-->
+</launch>

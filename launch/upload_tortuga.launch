@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<launch>
+  <group ns="tortugabot1">
+  	<param name="tf_prefix" value="tortugabot1" />
+	<arg name="urdf-name" default="tortuga_description.urdf.xacro"/>
+ 	<arg name="urdf-path" default="$(find tortuga_description)/urdf/$(arg urdf-name)"/>
+
+  	<param name="robot_description" command="$(find xacro)/xacro.py '$(arg urdf-path)'" />
+    
+</group>
+</launch>

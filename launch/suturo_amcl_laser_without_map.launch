@@ -55,7 +55,7 @@
       <param name="initial_pose_a"            value="$(arg initial_pose_a)"/>
       <remap from="scan"                      to="$(arg scan_topic)"/>
       <remap from="map"			      to="/map"/>
-      <remap from="static_map"		      to="/stati_map"/>
+      <remap from="static_map"		      to="/static_map"/>
     </node>
   </group>
 
