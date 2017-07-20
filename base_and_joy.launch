@@ -1,0 +1,5 @@
+<launch>
+  <!--include file="$(find roboclaw_driver)/launch/roboclaw.launch"/-->
+  <include file="$(find tortugabot_bringup)/launch/roboclaw_node.launch"/>
+  <include file="$(find tortugabot_bringup)/launch/joy_teleop.launch"/>
+</launch>
