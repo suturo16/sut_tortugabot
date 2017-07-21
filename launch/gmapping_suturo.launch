@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <launch>
-  <arg name="scan_topic"  default="tortugabot1/scan" />
-  <arg name="base_frame"  default="tortugabot1/base_footprint"/>
-  <arg name="odom_frame"  default="tortugabot1/odom"/>
+  <arg name="scan_topic"  default="scan" />
+  <arg name="base_frame"  default="base_footprint"/>
+  <arg name="odom_frame"  default="odom"/>
 
   <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
     <param name="base_frame" value="$(arg base_frame)"/>

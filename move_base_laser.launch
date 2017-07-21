@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <launch>
   <arg name="odom_frame_id"   default="odom"/>
   <arg name="base_frame_id"   default="base_footprint"/>
