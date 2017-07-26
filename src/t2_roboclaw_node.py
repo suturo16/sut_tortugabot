@@ -13,6 +13,8 @@ __author__ = "bwbazemore@uga.edu (Brad Bazemore)"
 
 g_invert_motor_axes = rospy.get_param("g_invert_motor_axes", "True")
 g_flip_left_right_motors = False # By default M1=right motor M2=left motor
+base_frame_id = rospy.get_param("base_frame_id", "base_footprint")
+odom_frame_id = rospy.get_param("odom_frame_id", "odom")
 
 
 # TODO need to find some better was of handling OSerror 11 or preventing it, any ideas?
@@ -145,8 +147,7 @@ class Node:
         rospy.loginfo("Connecting to roboclaw")
         dev_name = rospy.get_param("~dev", "/dev/ttyACM0")
         baud_rate = int(rospy.get_param("~baud", "115200"))
-        base_frame_id = rospy.get_param("base_frame_id", "base_footprint")
-        odom_frame_id = rospy.get_param("odom_frame_id", "odom")
+
 
         self.address = int(rospy.get_param("~address", "128"))
         if self.address > 0x87 or self.address < 0x80:
