@@ -9,8 +9,8 @@
 
   <node name="laser_driver" pkg="urg_node" type="urg_node" args="_ip_address:=192.168.200.11">
     <remap from="scan" to="scan_raw" />
-    <!--remap from="camera_depth_frame" to="laser" /-->
-	<param name="frame_id" value="tortugabot2/laser" />  
+    <remap from="camera_depth_frame" to="tortugabot2/laser" />
+    <param name="frame_id" value="tortugabot2/laser" />  
 </node>
 
   <node name="laser_filter" pkg="laser_range_filter" type="filter.py">
