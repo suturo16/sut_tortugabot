@@ -11,7 +11,7 @@ from nav_msgs.msg import Odometry
 
 __author__ = "bwbazemore@uga.edu (Brad Bazemore)"
 
-g_invert_motor_axes = True
+g_invert_motor_axes = rospy.get_param("g_invert_motor_axes", "True")
 g_flip_left_right_motors = False # By default M1=right motor M2=left motor
 
 
@@ -21,7 +21,7 @@ class EncoderOdom:
     def __init__(self, ticks_per_meter, base_width):
         self.TICKS_PER_METER = ticks_per_meter
         self.BASE_WIDTH = base_width
-        self.odom_pub = rospy.Publisher('/odom', Odometry, queue_size=10)
+        self.odom_pub = rospy.Publisher(odom_frame_id, Odometry, queue_size=10)
         self.cur_x = 0
         self.cur_y = 0
         self.cur_theta = 0.0
@@ -91,12 +91,12 @@ class EncoderOdom:
         br.sendTransform((cur_x, cur_y, 0),
                          tf.transformations.quaternion_from_euler(0, 0, cur_theta),
                          current_time,
-                         "base_footprint",
-                         "odom")
+                         base_footprint,
+                         odom_frame_id)
 
         odom = Odometry()
         odom.header.stamp = current_time
-        odom.header.frame_id = 'odom'
+        odom.header.frame_id = odom_frame_id
 
         odom.pose.pose.position.x = cur_x
         odom.pose.pose.position.y = cur_y
@@ -110,7 +110,7 @@ class EncoderOdom:
         odom.pose.covariance[28] = 99999
         odom.pose.covariance[35] = 0.01
 
-        odom.child_frame_id = 'base_footprint'
+        odom.child_frame_id = base_footprint
         odom.twist.twist.linear.x = vx
         odom.twist.twist.linear.y = 0
         odom.twist.twist.angular.z = vth
@@ -145,6 +145,8 @@ class Node:
         rospy.loginfo("Connecting to roboclaw")
         dev_name = rospy.get_param("~dev", "/dev/ttyACM0")
         baud_rate = int(rospy.get_param("~baud", "115200"))
+        base_frame_id = rospy.get_param("base_frame_id", "base_footprint")
+        odom_frame_id = rospy.get_param("odom_frame_id", "odom")
 
         self.address = int(rospy.get_param("~address", "128"))
         if self.address > 0x87 or self.address < 0x80:

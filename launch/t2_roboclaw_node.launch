@@ -1,18 +1,21 @@
 <?xml version="1.0"?>
 <launch>
-
+	<arg name="tf_prefix" default="tortugabot2" />
     <arg name="dev" default="/dev/ttyACM0"/>
     <arg name="baud" default="115200"/>
     <arg name="address" default="128"/>
     <arg name="max_speed" default="1.0"/>
+    <arg name="g_invert_motor_axes" default="true"/>
+    <arg name="odom_frame_id" default="odom"/>
+    <arg name="base_frame_id" default="base_footprint"/>
+    <!-- <arg name="ticks_per_meter" default="2495"/> --> <!--For tortugabot2/3-->
     <arg name="ticks_per_meter" default="2495"/>
-    <!--arg name="ticks_per_meter" default="1181.35"/--> <!--For tortugabot1-->
     
     <arg name="base_width" default="0.357"/>
     <!--arg name="base_width" default="0.339"/--> <!--For tortugabot1-->
     <arg name="run_diag" default="true"/>
 
-    <node if="$(arg run_diag)" pkg="roboclaw_node" type="roboclaw_node.py" name="roboclaw_node" output="screen">
+    <node if="$(arg run_diag)" pkg="sut_tortugabot" type="t2_roboclaw_node.py" name="roboclaw_node" output="screen">
 
         <param name="~dev" value="$(arg dev)"/>
         <param name="~baud" value="$(arg baud)"/>
@@ -20,8 +23,11 @@
         <param name="~max_speed" value="$(arg max_speed)"/>
         <param name="~ticks_per_meter" value="$(arg ticks_per_meter)"/>
         <param name="~base_width" value="$(arg base_width)"/>
-    </node>
+        <param name="g_invert_motor_axes" value="$(arg g_invert_motor_axes)"/>
+        <param name="odom_frame_id" value="$(arg tf_prefix)/$(arg odom_frame_id)"/>
+        <param name="base_frame_id" value="$(arg tf_prefix)/$(arg base_frame_id)"/>
 
+    </node>	
     <node pkg="diagnostic_aggregator" type="aggregator_node"
           name="diagnostic_aggregator">
         <rosparam command="load"
