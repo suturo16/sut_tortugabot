@@ -11,7 +11,7 @@ from nav_msgs.msg import Odometry
 
 __author__ = "bwbazemore@uga.edu (Brad Bazemore)"
 
-g_invert_motor_axes = rospy.get_param("g_invert_motor_axes", "True")
+g_invert_motor_axes = True
 g_flip_left_right_motors = False # By default M1=right motor M2=left motor
 base_frame_id = rospy.get_param("base_frame_id", "base_footprint")
 odom_frame_id = rospy.get_param("odom_frame_id", "odom")
