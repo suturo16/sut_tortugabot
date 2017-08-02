@@ -4,5 +4,4 @@
  <!--include file="$(find roboclaw_driver)/launch/t1_roboclaw.launch"/-->
   <include file="$(find sut_tortugabot)/launch/t1_roboclaw_node.launch"/>
   <include file="$(find sut_tortugabot)/launch/t1_joy_teleop.launch"/>
-<!--remap from="odom" to="tortugabot1/odom"/-->
 </launch>

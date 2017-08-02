@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
 	<include file="$(find sut_tortugabot)/launch/t2_minimal_laser.launch"/>
-	<include file="$(find sut_tortugabot)/launch/t2_amcl_laser.launch"/>
+	<include file="$(find sut_tortugabot)/launch/t2_amcl_laser_without_map.launch"/>
 	<include file="$(find sut_tortugabot)/launch/t2_move_base_laser.launch"/>
 
 </launch>

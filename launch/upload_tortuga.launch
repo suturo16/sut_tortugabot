@@ -2,7 +2,7 @@
 
 <launch>
   <group ns="tortugabot1">
-  	<param name="tf_prefix" value="tortugabot1" />
+  	<param name="tf_prefix" value="tortugabot2" />
 	<arg name="urdf-name" default="tortuga_description.urdf.xacro"/>
  	<arg name="urdf-path" default="$(find tortuga_description)/urdf/$(arg urdf-name)"/>
 

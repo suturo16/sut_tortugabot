@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
 <launch>
-    <!--group ns="tortugabot1"-->
     <arg name="tf_prefix" default="tortugabot1"/>
     <arg name="dev" default="/dev/ttyACM0"/>
     <arg name="baud" default="115200"/>
@@ -15,11 +14,9 @@
     <!-- <arg name="base_width" default="0.357"/> --> <!--For tortugabot2-->
     <arg name="base_width" default="0.339"/> 
     <arg name="run_diag" default="true"/>
-    <!--arg name="frame_id" value="tortugabot1/odom"/-->
-    <!--remap from="odom" to="/tortugabot1/odom"/-->
 
     <node if="$(arg run_diag)" pkg="sut_tortugabot" type="t1_roboclaw_node.py" name="roboclaw_node" output="screen">
-	<!--param name="~tf_prefix" value="tortugabot1" /-->
+
         <param name="~dev" value="$(arg dev)"/>
         <param name="~baud" value="$(arg baud)"/>
         <param name="~address" value="$(arg address)"/>
@@ -36,6 +33,5 @@
         <rosparam command="load"
                   file="$(find roboclaw_node)/config/roboclaw_diag.yaml"/>
     </node>
-  <!--/group-->
 
 </launch>

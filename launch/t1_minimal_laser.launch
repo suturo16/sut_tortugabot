@@ -3,13 +3,13 @@
   <group ns="tortugabot1">
   <param name="tf_prefix" value="tortugabot1" />
       
-    <include file="$(find sut_tortugabot)/launch/suturo_base_and_joy.launch"/>
+    <include file="$(find sut_tortugabot)/launch/t1_base_and_joy.launch"/>
   
     <remap from="odom" to="tortugabot1/odom" />
   
     <node name="laser_driver" pkg="urg_node" type="urg_node" args="_ip_address:=192.168.200.10">
       <remap from="scan" to="scan_raw" />
-      <!--remap from="camera_depth_frame" to="tortugabot1/laser" /-->      
+      <remap from="camera_depth_frame" to="tortugabot1/laser" />      
 	<param name="frame_id" value="tortugabot1/laser" />    
     </node>
 

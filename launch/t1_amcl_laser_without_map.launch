@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <launch>
      
-  <!--param name="tf_prefix" value="tortugabot1"/-->
   <group ns="tortugabot1">
     <arg name="use_map_topic"   default="true"/>
     <arg name="scan_topic"      default="scan"/> 
@@ -54,8 +53,8 @@
       <param name="initial_pose_y"            value="$(arg initial_pose_y)"/>
       <param name="initial_pose_a"            value="$(arg initial_pose_a)"/>
       <remap from="scan"                      to="$(arg scan_topic)"/>
-      <remap from="map"			      to="/map"/>
-      <remap from="static_map"		      to="/static_map"/>
+      <remap from="map"			      		  to="/map"/>
+      <remap from="static_map"		          to="/static_map"/>
     </node>
   </group>
 
