@@ -22,5 +22,8 @@
           args="-0.05 0 0.36 0 0 0 tortugabot1/base_footprint tortugabot1/laser 100">    
    </node>
           
+   <node name="tortuga_top_publisher" pkg="tf" type="static_transform_publisher" 
+   	  args="0 0 0.4 0 0 0 base_footprint surface 60"/>       
+  
   </group>
 </launch>
