@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+
+  <group ns="tortugabot1">
+	<node name="laser_on_plate" pkg="tf" type="static_transform_publisher"
+		args="-0.05 0 0.36 0 0 0 tortugabot1/base_footprint tortugabot1/laser 200">
+	</node>
+	<!--- for odom debugging -->
+	<!--node name="map_odom_pub" pkg="tf" type="static_transform_publisher"
+		args="0 0 0 0 0 0 map tortugabot1/odom 100" >
+	</node-->
+
+  </group>
+</launch>

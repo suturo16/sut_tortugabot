@@ -23,7 +23,7 @@ class EncoderOdom:
     def __init__(self, ticks_per_meter, base_width):
         self.TICKS_PER_METER = ticks_per_meter
         self.BASE_WIDTH = base_width
-        self.odom_pub = rospy.Publisher('odom', Odometry, queue_size=10)
+        self.odom_pub = rospy.Publisher('odom', Odometry, queue_size=30)
         self.cur_x = 0
         self.cur_y = 0
         self.cur_theta = 0.0
@@ -202,7 +202,7 @@ class Node:
 
     def run(self):
         rospy.loginfo("Starting motor drive")
-        r_time = rospy.Rate(10)
+        r_time = rospy.Rate(30)
         while not rospy.is_shutdown():
 
             if (rospy.get_rostime() - self.last_set_speed_time).to_sec() > 1:
