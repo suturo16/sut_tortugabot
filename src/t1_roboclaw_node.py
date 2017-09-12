@@ -41,7 +41,6 @@ class EncoderOdom:
         return angle
 
     def update(self, enc_left, enc_right):
-        rospy.logwarn("start update")
         left_ticks = enc_left - self.last_enc_left
         right_ticks = enc_right - self.last_enc_right
         self.last_enc_left = enc_left
