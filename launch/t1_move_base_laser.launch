@@ -27,6 +27,8 @@
       <remap from="odom" to="$(arg odom_topic)"/>
       <remap from="scan" to="$(arg laser_topic)"/>
       <remap from="map"  to="/map"/>
+      <remap from="/tf"   to="/tortugabot1/tf"/>
+      <remap from="/tf_static" to="/tortugabot1/tf_static"/>
     </node>
   </group>
 </launch>
