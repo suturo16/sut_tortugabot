@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<launch>
-
-  <!--include file="$(find roboclaw_driver)/launch/t2_roboclaw.launch"/-->
-  <include file="$(find sut_tortugabot)/launch/t2_roboclaw_node.launch"/>
-  <include file="$(find sut_tortugabot)/launch/t2_joy_teleop.launch"/>
-</launch>
