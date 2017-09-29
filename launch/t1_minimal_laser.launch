@@ -29,7 +29,7 @@
     </node>
           
    <node name="tortuga_top_publisher" pkg="tf" type="static_transform_publisher" 
-   	  args="0 0 0.4 0 0 0 tortugabot1/base_footprint tortugabot1/surface 60"/>       
+   	  args="-0.1 0 0.4 0 0 0 tortugabot1/base_footprint tortugabot1/surface 60"/>       
   
    <node name="local_to_global_tf" pkg="topic_tools" type="throttle" args="messages /tortugabot1/tf 10 /tf" />
    <node name="local_to_global_tf_static" pkg="topic_tools" type="throttle" args="messages /tortugabot1/tf_static 10 /tf_static" />
